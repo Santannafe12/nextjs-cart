@@ -28,9 +28,9 @@ export default function HorizontalCard({ product }: { product: Product }) {
     };
 
     return (
-        <Card className="w-8/12">
-            <CardHeader className="flex flex-row gap-12">
-                <Image src={product.image.url} alt={product.name} width={200} height={200} className="aspect-square object-scale-down mb-4" />
+        <Card className="w-full md:w-8/12">
+            <CardHeader className="flex flex-col md:flex-row gap-12">
+                <Image src={product.image.url} alt={product.name} width={200} height={200} className="aspect-square self-center md:self-auto object-scale-down mb-4" />
                 <div className="space-y-2">
                     <CardTitle className="pb-2">
                         {product.name}
@@ -39,12 +39,12 @@ export default function HorizontalCard({ product }: { product: Product }) {
                         {product.description}
                     </CardDescription>
                     <section className="flex flex-col gap-1">
-                        <strong className="text-sm text-muted-foreground cursor-default select-none">
+                        <strong className="text-base text-muted-foreground cursor-default select-none">
                             Quantidade: {quantity}
                         </strong>
                         <div className="flex gap-2">
-                            <Minus className="p-[1px] rounded-md bg-primary-foreground h-6 w-6 cursor-pointer text-red-600 hover:text-red-800" onClick={() => handleRemoveProductCart(product.id, quantity, 1)} />
-                            <Plus className="p-[1px] rounded-md bg-primary-foreground h-6 w-6 cursor-pointer text-gray-600 hover:text-gray-800" onClick={() => handleAddProduct(product)} />
+                            <Minus className="p-[1px] rounded-md bg-primary-foreground h-10 w-10 md:h-6 md:w-6 cursor-pointer text-red-600 hover:text-red-800" onClick={() => handleRemoveProductCart(product.id, quantity, 1)} />
+                            <Plus className="p-[1px] rounded-md bg-primary-foreground h-10 w-10 md:h-6 md:w-6 cursor-pointer text-gray-600 hover:text-gray-800" onClick={() => handleAddProduct(product)} />
                         </div>
                     </section>
                 </div>

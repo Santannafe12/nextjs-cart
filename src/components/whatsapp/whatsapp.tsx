@@ -26,7 +26,7 @@ export default function WhatsApp() {
 
     return (
         <div>
-            <Button className="flex gap-2 items-center bg-green-600 text-white hover:bg-green-700 select-none" onClick={() => GenerateURIWhatsApp("5524992382730")}><Phone /> Entrar em Contato!</Button>
+            <Button className="flex gap-2 items-center bg-green-600 text-white hover:bg-green-700 select-none w-full text-lg md:text-base md:w-auto" onClick={() => GenerateURIWhatsApp("5524992382730")}><Phone /> Entrar em Contato!</Button>
         </div>
     )
 }

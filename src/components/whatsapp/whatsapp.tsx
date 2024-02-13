@@ -10,19 +10,13 @@ const baseMessage = "Olá, gostaria de fazer um pedido e solicitar um orçamento
 export default function WhatsApp() {
     const { cartItems } = useContext(CartContext)!;
 
-    let messageURI = baseMessage;
-
-    cartItems.forEach((item, index) => {
-        messageURI += `\n\nProduto ${index}: ${item.product.name}\nQuantidade: ${item.quantity}`;
-    });
-
-    const whatsappLink = `https://wa.me/5524992382730?text=${encodeURIComponent(
-        messageURI
-    )}`;
-
-    window.open(whatsappLink, "_blank");
-
     const GenerateURIWhatsApp = (phone: string) => {
+        let messageURI = baseMessage;
+
+        cartItems.forEach((item, index) => {
+            messageURI += `\n\nProduto ${index}: ${item.product.name}\nQuantidade: ${item.quantity}`;
+        });
+
         const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(
             messageURI
         )}`;

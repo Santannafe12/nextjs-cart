@@ -14,7 +14,7 @@ export default function WhatsApp() {
         let messageURI = baseMessage;
 
         cartItems.forEach((item, index) => {
-            messageURI += `\n\nProduto ${index}: ${item.product.name}\nQuantidade: ${item.quantity}`;
+            messageURI += `\n\nProduto ${index+1}: ${item.product.name}\nQuantidade: ${item.quantity}`;
         });
 
         const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(

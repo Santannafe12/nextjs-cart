@@ -1,10 +1,5 @@
-import Cart from "@/components/cart";
-import { Suspense } from "react";
+import CartPage from "@/components/pages/cart";
 
 export default function Page() {
-    return (
-        <div>
-            <Cart />
-        </div>
-    )
+    return <CartPage />
 }

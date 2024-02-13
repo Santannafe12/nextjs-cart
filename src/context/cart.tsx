@@ -12,6 +12,9 @@ type CartContextType = {
     cartItems: CartItem[];
     handleAddToCart: (product: Product, quantity: number) => void;
     handleRemoveFromCart: (productId: string, quantity: number) => void;
+    handleRemoveProduct: (productId: string) => void;
+    productQuantity: (productId: string) => number;
+    count: () => number;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -62,6 +65,24 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
     };
 
+    const handleRemoveProduct = (productId: string) => {
+        const updatedCartItems = cartItems.filter(item => item.product.id !== productId);
+        setCartItems(updatedCartItems);
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    }
+
+    const productQuantity = (productId: string) => {
+        const existingCartItem = cartItems.find(item => item.product.id === productId);
+        if (existingCartItem) {
+            return existingCartItem.quantity;
+        }
+        return 0;
+    }
+
+    const count = () => {
+        return cartItems.length;
+    };
+
     useEffect(() => {
         const storedCartItems = localStorage.getItem('cartItems');
         if (storedCartItems) {
@@ -72,7 +93,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const cartContextValue: CartContextType = {
         cartItems,
         handleAddToCart,
-        handleRemoveFromCart
+        handleRemoveFromCart,
+        handleRemoveProduct,
+        productQuantity,
+        count
     };
 
     return (
